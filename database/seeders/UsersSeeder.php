@@ -2,12 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 
-class UserSeeder extends Seeder
+class UsersTableSeeder extends Seeder
 {
     public function run()
     {
@@ -20,8 +18,8 @@ class UserSeeder extends Seeder
             DB::table('users')->insert([
                 'name' => $user['name'],
                 'email' => $user['email'],
-                'password_hash' => Hash::make($user['password_hash']), // Hash the password
-                'role_id' => $user['role_id'],
+                'password_hash' => bcrypt($user['password']), // Hash the password
+                'role_id' => $user['role_id'], // Ensure this ID exists in the roles table
                 'profile_picture' => $user['profile_picture'],
                 'created_at' => now(),
                 'updated_at' => now(),

@@ -1,17 +1,23 @@
 <?php
-
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
-class AchievementsSeeder extends Seeder
+class AchievementsTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function run()
     {
-        //
+        // Load the JSON file
+        $json = file_get_contents(database_path('jsonfiles/achievements.json'));
+        $achievements = json_decode($json, true);
+
+        // Insert each achievement into the database
+        foreach ($achievements as $achievement) {
+            DB::table('achievements')->insert([
+                'name' => $achievement['name'],
+                'description' => $achievement['description'],
+            ]);
+        }
     }
 }
