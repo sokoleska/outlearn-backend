@@ -2,11 +2,14 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
+
 class StudentsTableSeeder extends Seeder
 {
+
     public function run()
     {
         // Load the JSON file

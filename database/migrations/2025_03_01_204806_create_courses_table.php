@@ -17,12 +17,13 @@ return new class extends Migration
             $table->string("description");
             $table->unsignedBigInteger('instructor_id');
             $table->unsignedBigInteger('category_id');
-
-            $table->timestamp('created_at');
-
+        
+            $table->timestamps(); // Fix: Automatically handles created_at and updated_at
+        
             $table->foreign('instructor_id')->references('id')->on('professors')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
+        
     }
 
     /**

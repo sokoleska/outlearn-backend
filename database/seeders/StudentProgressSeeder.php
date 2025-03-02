@@ -20,10 +20,10 @@ class StudentProgressSeeder extends Seeder
         // Insert each student progress entry into the database
         foreach ($studentProgressData as $progress) {
             DB::table('student_progress')->insert([
-                'student_id' => $progress['student_id'], // Ensure this ID exists in the students table
-                'lesson_id' => $progress['lesson_id'], // Ensure this ID exists in the lessons table
-                'completed' => $progress['completed'], // Boolean value
-                'progress_percentage' => $progress['progress_percentage'], // Integer value
+                'user_id' => $progress['user_id'], // Ensure this ID exists in the students table
+                'lesson_id' => $progress['lesson_id'],
+                'completed' => (bool) $progress['completed'], // Ensure boolean format
+                'progress_percentage' => (int) $progress['progress_percentage'], // Ensure integer format
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

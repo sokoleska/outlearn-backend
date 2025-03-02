@@ -13,6 +13,7 @@ class User extends Model
     protected $fillable = [
         "name",
         "email",
+        "role_id",
         "profile_picture"
     ];
 
@@ -21,8 +22,7 @@ class User extends Model
     {
         return $this->hasOne(Student::class);
     }
- 
-    // 1 to 1
+
     public function professor()
     {
         return $this->hasOne(Professor::class);

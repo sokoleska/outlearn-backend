@@ -13,13 +13,17 @@ return new class extends Migration
     {
         Schema::create('professors', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger("user_id")->unique(); // Povrzuvanje so users tabela
             $table->string("position");
-            $table->string("company");
-            $table->enum("gender", ["male","female"]);
-            $table->dateTime("birth_date");
-            $table->integer("work_experience_years");            
+            $table->string("company")->nullable();
+            $table->enum("gender", ["male","female"])->nullable();
+            $table->date("birth_date");
+            $table->integer("work_experience_years")->nullable();    
             $table->timestamps();
+        
+            $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade");
         });
+        
     }
 
     /**
