@@ -21,10 +21,11 @@ class AdminModulesController extends Controller
 
     public function store(Request $request, Course $course)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'order' => 'required|integer|min:1|unique:modules,order,NULL,id,course_id,'.$course->id,
-        ]);
+            $validated = $request->validate([
+                'course_id' => 'required|exists:courses,id',
+                'title'     => 'required|string|max:255',
+                'content'   => 'required|string',
+            ]);
 
         $course->modules()->create($validated);
 
@@ -40,8 +41,9 @@ class AdminModulesController extends Controller
     public function update(Request $request, Course $course, Module $module)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'order' => 'required|integer|min:1|unique:modules,order,'.$module->id.',id,course_id,'.$course->id,
+            'course_id' => 'required|exists:courses,id',
+            'title'     => 'required|string|max:255',
+            'content'   => 'required|string',
         ]);
 
         $module->update($validated);

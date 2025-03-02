@@ -20,11 +20,15 @@
             <label class="block font-medium">Professor</label>
             <select name="instructor_id" class="w-full border rounded-lg p-2" required>
                 <option value="">Select Professor</option>
-                @foreach($users as $user)
+                {{-- @foreach($users as $user)
                     <option value="{{ $user->id }}" {{ old('instructor_id') == $user->id ? 'selected' : '' }}>
                         {{ $user->name }}
                     </option>
-                @endforeach
+                @endforeach --}}
+                <option value="6">Professor 1</option>
+                <option value="7">Professor 2</option>
+                <option value="8">Professor 3</option>
+
             </select>
         </div>
 

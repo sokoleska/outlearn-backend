@@ -52,6 +52,14 @@
         </div>
 
         <div class="mb-4">
+            <label class="block font-medium">Birthdate</label>
+            <input type="date" name="birth_date" value="{{ old('birth_date') }}" class="w-full border rounded-lg p-2 @error('birth_date') border-red-500 @enderror">
+            @error('birth_date')
+                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+            @enderror
+        </div>
+
+        <div class="mb-4">
             <label class="block font-medium">Work Experience (Years)</label>
             <input type="number" name="work_experience_years" value="{{ old('work_experience_years') }}" class="w-full border rounded-lg p-2 @error('work_experience_years') border-red-500 @enderror" min="0" max="60">
             @error('work_experience_years')

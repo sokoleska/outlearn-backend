@@ -35,24 +35,25 @@ class AdminCoursesController extends Controller
         $course = Course::findOrFail($id);
         $categories = Category::all(); 
         $users = User::all();
-        return view('admin.courses.update', compact('course', 'categories', 'users'));  
+        return view('admin.courses.edit', compact('course', 'categories', 'users'));  
     }
-    
     public function store(Request $request)
 {
-    try {
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'instructor_id' => 'required|exists:professors,id', 
-            'category_id' => 'required|exists:categories,id',
-        ]);
+    $request->validate([
+        'title' => 'required|string|max:255',
+        'description' => 'required|string',
+        'instructor_id' => 'required|exists:users,id',
+        'category_id' => 'required|exists:categories,id',
+    ]);
 
-        Course::create($validated);
-        return redirect()->route('admin.courses.index')->with('message', 'Course created successfully!');
-    } catch (\Exception $e) {
-        return back()->with('error', 'Error: ' . $e->getMessage());
-    }
+    Course::create([
+        'title' => $request->title,
+        'description' => $request->description,
+        'instructor_id' => $request->instructor_id,
+        'category_id' => $request->category_id,
+    ]);
+
+    return redirect()->route('admin.courses.index')->with('success', 'Course created successfully!');
 }
 
 public function update(Request $request, $id)

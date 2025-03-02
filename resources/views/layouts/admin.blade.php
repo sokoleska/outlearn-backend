@@ -29,15 +29,15 @@
     <nav class="bg-white shadow-md p-4 rounded-2xl fixed top-0 left-0 w-full flex justify-center z-50">
         <ul class="flex space-x-6 px-6">
             <li>
-                <a href="{{ route('admin.professors.index') }}" 
-                   class="block p-3 rounded-lg hover:bg-gray-200 {{ request()->routeIs('admin.professors.index') ? 'bg-gray-300 font-semibold' : '' }}">
-                    Professors
-                </a>
-            </li>
-            <li>
                 <a href="{{ route('admin.courses.index') }}" 
                    class="block p-3 rounded-lg hover:bg-gray-200 {{ request()->routeIs('admin.courses.index') ? 'bg-gray-300 font-semibold' : '' }}">
                     Courses
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('admin.professors.index') }}" 
+                   class="block p-3 rounded-lg hover:bg-gray-200 {{ request()->routeIs('admin.professors.index') ? 'bg-gray-300 font-semibold' : '' }}">
+                    Professors
                 </a>
             </li>
             <li>

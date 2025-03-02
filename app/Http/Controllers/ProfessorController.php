@@ -9,8 +9,10 @@ use Illuminate\Http\Request;
 
 class ProfessorController extends Controller
 {
+   
     public function index() {
-        $professors = Professor::with('user')->get();
+        $professors = Professor::with('users')->get();
+        // $professors = User::all();
         return view('admin.professors.index', compact('professors'));
     }
     
@@ -28,7 +30,7 @@ class ProfessorController extends Controller
                 'email' => 'required|email|unique:users,email',
                 'position' => 'required|string',
                 'company' => 'nullable|string',
-                'gender' => 'nullable|in:male,female',
+                'gender' => 'nullable|in:male,female,other',
                 'birth_date' => 'required|date',
                 'work_experience_years' => 'nullable|integer|min:0|max:60',
             ]);

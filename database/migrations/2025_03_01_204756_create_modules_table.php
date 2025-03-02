@@ -13,13 +13,12 @@ return new class extends Migration
     {
         Schema::create('modules', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('course_id');
-            $table->string('name');
-            $table->integer('order');
+            $table->foreignId('course_id')->constrained()->onDelete('cascade');
+            $table->string('title');  // Ensure this exists
+            $table->text('content');
             $table->timestamps();
-            
-            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
         });
+        
     }
 
     /**

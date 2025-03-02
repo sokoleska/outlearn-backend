@@ -9,9 +9,7 @@ use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\AdminCoursesController;
 use App\Http\Controllers\AdminModulesController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Route::get('/admin/login', function(){
     return view('admin.login');
@@ -19,7 +17,7 @@ Route::get('/admin/login', function(){
 
 
 
-Route::get('/admin/dashboard',[AdminCoursesController::class, 'index'])->name('admin.dashboard');
+Route::get('/',[AdminCoursesController::class, 'index'])->name('admin.courses.index');
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/courses', [AdminCoursesController::class, 'index'])->name('courses.index');
