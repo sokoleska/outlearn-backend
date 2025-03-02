@@ -16,7 +16,7 @@ class StudentInterestsTableSeeder extends Seeder
         // Insert each student-interest entry into the database
         foreach ($studentInterestsData as $entry) {
             DB::table('student_interests')->insert([
-                'student_id' => $entry['student_id'], // Ensure this ID exists in the students table
+                'student_id' => $entry['user_id'], // Ensure this ID exists in the students table
                 'interest_id' => $entry['interest_id'], // Ensure this ID exists in the interests table
                 'created_at' => now(),
             ]);

@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class WishlistsSeeder extends Seeder
+class WishlistsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

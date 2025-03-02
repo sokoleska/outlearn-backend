@@ -10,7 +10,7 @@ class AchievementsStudentTableSeeder extends Seeder
     public function run()
     {
         // Load the JSON file
-        $json = file_get_contents(database_path('jsonfiles/achievements_student.json'));
+        $json = file_get_contents(database_path('jsonfiles/achievement_students.json'));
         $achievementsStudentData = json_decode($json, true);
 
         // Insert each achievement-student entry into the database

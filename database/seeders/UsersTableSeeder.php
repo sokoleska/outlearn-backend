@@ -18,11 +18,11 @@ class UsersTableSeeder extends Seeder
             DB::table('users')->insert([
                 'name' => $user['name'],
                 'email' => $user['email'],
-                'password_hash' => bcrypt($user['password']), // Hash the password
+                'password_hash' => bcrypt($user['password_hash']), // Hash the password
                 'role_id' => $user['role_id'], // Ensure this ID exists in the roles table
                 'profile_picture' => $user['profile_picture'],
-                'created_at' => now(),
-                'updated_at' => now(),
+                'created_at' => $user['created_at'],
+                'updated_at' => $user['updated_at'],
             ]);
         }
     }

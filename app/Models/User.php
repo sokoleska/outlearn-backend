@@ -19,7 +19,7 @@ class User extends Model
     // 1 to 1
     public function student()
     {
-        return $this->hasOne(Student::class);
+        return $this->hasOne(Student::class, 'id');
     }
  
     // 1 to 1

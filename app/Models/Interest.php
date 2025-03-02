@@ -9,6 +9,6 @@ class Interest extends Model
     // * to *
     public function students()
     {
-        return $this->belongsToMany(Student::class, 'student_interests');
+        return $this->belongsToMany(Student::class, 'student_interests', 'interest_id', 'student_id')->using(StudentInterest::class);;
     }
 }

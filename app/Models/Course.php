@@ -9,7 +9,7 @@ class Course extends Model
     // * to 1
     public function professor()
     {
-        return $this->belongsTo(Professor::class);
+        return $this->belongsTo(Professor::class, 'instructor_id');
     }
 
     // 1 to *

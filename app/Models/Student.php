@@ -20,7 +20,7 @@ class Student extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'id');
     }
 
     // 1 to 1
@@ -32,7 +32,7 @@ class Student extends Model
     // * to *
     public function interests()
     {
-        return $this->belongsToMany(Interest::class, 'student_interests');
+        return $this->belongsToMany(Interest::class, 'student_interests', 'student_id', 'interest_id')->using(StudentInterest::class);
     }
 
     // * to *

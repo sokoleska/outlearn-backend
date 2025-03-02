@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class StudentProgress extends Model
 {
+    public $guarded = [];
     // Define the inverse relationship with Student
     public function student()
     {
